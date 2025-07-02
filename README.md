@@ -1,4 +1,4 @@
-# 📘 books-review-service
+# 📘 Books-Review-Service
 
 ## 📝 Description
 
@@ -66,25 +66,88 @@ This project is ideal for developers learning backend development, caching, data
 ### 📖 Get all books
 
 ```http
-GET /books
+    GET /books
+```
 
-🖊️ Add a new book
+🖊️Add a new book
 
 POST /books
+| Field  | Type   | Required | Description        |
+| ------ | ------ | -------- | ------------------ |
+| title  | string | ✅        | Title of the book  |
+| author | string | ✅        | Author of the book |
 
-Field	Type	Required	Description
-title	string	✅	Title of the book
-author	string	✅	Author of the book
-💬 Get reviews for a book
+###💬 Get reviews for a book
+  GET /books/{book_id}/reviews
 
-GET /books/{book_id}/reviews
+ | Path Param | Type | Description    |
+ | ---------- | ---- | -------------- |
+ | book\_id   | int  | ID of the book |
 
-Path Param	Type	Description
-book_id	int	ID of the book
+
 ✍️ Add a review to a book
 
-POST /books/{book_id}/reviews
 
-Field	Type	Required	Description
-content	string	✅	Content of the review
-rating	int	✅	Rating (1 to 5)
+POST /books/{book_id}/reviews
+ | Field   | Type   | Required | Description           |
+ | ------- | ------ | -------- | --------------------- |
+ | content | string | ✅        | Content of the review |
+ | rating  | int    | ✅        | Rating (1 to 5)       |
+
+
+
+
+📦 Installation & Setup
+1. Clone the repository
+
+git clone https://github.com/your-username/books-review-service.git
+cd books-review-service/book-review-api
+
+2. Create and activate a virtual environment
+
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+3. Install dependencies
+
+pip install -r requirements.txt
+
+4. Configure database
+
+In config.py, update your DB URI:
+
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:1234@localhost/book_review_db"
+
+5. Run migrations
+
+flask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+
+6. Start Redis server
+
+Make sure Redis is running locally:
+
+sudo service redis-server start  # or `redis-server`
+
+7. Start the Flask server
+
+flask run
+
+# 🧪Running Tests
+   From root project directory
+   PYTHONPATH=. pytest tests/
+   
+
+# ✅ requirements.txt
+```Flask==2.3.2
+   Flask-SQLAlchemy==3.1.1
+   Flask-Migrate==4.0.5
+   PyMySQL==1.1.0
+   redis==5.0.1
+   pytest==8.2.2
+   pytest-flask==1.3.0
+```
+##Install with:
+
+pip install -r requirements.txt
