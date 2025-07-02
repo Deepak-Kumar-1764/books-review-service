@@ -6,7 +6,8 @@ This is the user interface for the Book Review API built using React.
 
 ```bash
 cd book-review-ui
-npm install
+sudo apt-get install npm
+sudo apt-get install lucide-react
 npm start
 ```
 
