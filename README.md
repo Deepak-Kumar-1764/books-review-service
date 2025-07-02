@@ -70,15 +70,18 @@ This project is ideal for developers learning backend development, caching, data
 ```
 
 🖊️Add a new book
-
-POST /books
+```http
+    POST /books
+```
 | Field  | Type   | Required | Description        |
 | ------ | ------ | -------- | ------------------ |
 | title  | string | ✅        | Title of the book  |
 | author | string | ✅        | Author of the book |
 
 ###💬 Get reviews for a book
-  GET /books/{book_id}/reviews
+  ```http
+     GET /books/{book_id}/reviews
+  ```
 
  | Path Param | Type | Description    |
  | ---------- | ---- | -------------- |
@@ -86,9 +89,9 @@ POST /books
 
 
 ✍️ Add a review to a book
-
-
-POST /books/{book_id}/reviews
+  ```http
+     POST /books/{book_id}/reviews
+  ```
  | Field   | Type   | Required | Description           |
  | ------- | ------ | -------- | --------------------- |
  | content | string | ✅        | Content of the review |
